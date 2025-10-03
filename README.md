@@ -1,4 +1,4 @@
-## 抽牌 SideProject-塔羅系列-Phase1
+## 抽牌 SideProject-塔羅-Phase1
 
 **快速入口：** [https://ibonlorita.github.io/tarot-game](https://ibonlorita.github.io/tarot-game)
 
