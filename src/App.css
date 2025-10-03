@@ -1,0 +1,17 @@
+/* src/App.css */
+
+/**
+ * 🎨 App 全域樣式
+ */
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  /* App 容器不需要額外樣式 */
+  /* 因為所有樣式都在 TarotGame 裡面 */
+  min-height: 100vh;
+}

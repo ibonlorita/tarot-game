@@ -1,0 +1,1 @@
+export { CardInterpretation } from './CardInterpretation';

@@ -1,0 +1,34 @@
+/* src/index.css */
+
+/**
+ * 🌐 全域樣式
+ * 
+ * 設定整個網站的基礎樣式
+ */
+
+ body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* 🎯 移除預設樣式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 📱 確保全螢幕背景 */
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+}

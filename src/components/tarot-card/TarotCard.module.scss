@@ -1,0 +1,321 @@
+// 🎨 components/TarotCard/TarotCard.module.scss
+
+/**
+ * 🃏 單張塔羅牌樣式
+ * 
+ * 使用 CSS Modules 的好處：
+ * 1. 樣式隔離，不會污染全域
+ * 2. 類名自動加上 hash，避免衝突
+ * 3. 支援 SCSS 語法
+ */
+
+ .card {
+  // 基礎樣式
+  background: linear-gradient(145deg, #4f46e5 0%, #7c3aed 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 25px;
+  min-height: 350px;
+  cursor: pointer;
+  
+  // 過渡動畫
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // 陰影
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  
+  // 佈局
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  // 🎯 選中狀態
+  &.selected {
+    border: 4px solid #fbbf24;
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.25),
+      0 0 0 2px #fbbf24;
+  }
+
+  // 🔄 翻牌後的狀態
+  &.flipped {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    cursor: default;
+  }
+
+  // 🚫 禁用狀態
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // 🎭 hover 效果（未翻牌且未禁用時）
+  &:not(.flipped):not(.disabled):hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  }
+
+  // ⌨️ focus 狀態（無障礙支援）
+  &:focus {
+    outline: 3px solid #fbbf24;
+    outline-offset: 2px;
+  }
+}
+
+// ═══════════════════════════════════════
+// 🃏 牌卡正面樣式
+// ═══════════════════════════════════════
+
+.cardFront {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+// 花色標籤
+.suitBadge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+// 🖼️ 圖片容器
+.cardImageContainer {
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+// 水晶球圖示（備用）
+.cardIcon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+// 牌卡標題
+.cardTitle {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.cardSubtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+// 🏷️ 關鍵字標籤
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.keywordTag {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// 📖 意義說明
+.meaning {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: left;
+  width: 100%;
+}
+
+.meaningTitle {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.meaningText {
+  color: #374151;
+  margin: 0;
+}
+
+// ═══════════════════════════════════════
+// 🔒 牌卡背面樣式
+// ═══════════════════════════════════════
+
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+// 神秘光暈效果
+.backGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 70%
+  );
+  border-radius: 12px;
+  animation: glow 3s ease-in-out infinite;
+}
+
+.backContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.backIcon {
+  font-size: 5rem;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: pulse 2s infinite;
+}
+
+.backTitle {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.backSubtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+// ═══════════════════════════════════════
+// 🎬 動畫效果
+// ═══════════════════════════════════════
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+// ═══════════════════════════════════════
+// 📱 響應式設計
+// ═══════════════════════════════════════
+
+@media (max-width: 768px) {
+  .card {
+    min-height: 300px;
+    padding: 20px;
+  }
+
+  .cardIcon {
+    font-size: 3rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+
+  .backIcon {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    min-height: 280px;
+    padding: 15px;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .meaning {
+    font-size: 0.85rem;
+    padding: 12px;
+  }
+}

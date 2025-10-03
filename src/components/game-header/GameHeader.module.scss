@@ -1,0 +1,133 @@
+// 🎨 components/GameHeader/GameHeader.module.scss
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+// ═══════════════════════════════════════
+// 🎯 標題區域
+// ═══════════════════════════════════════
+
+.titleSection {
+  margin-bottom: 20px;
+}
+
+.mainTitle {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  
+  // 文字漸層效果
+  background: linear-gradient(45deg, #fff, #e0e7ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 300;
+}
+
+// ═══════════════════════════════════════
+// 📊 狀態欄
+// ═══════════════════════════════════════
+
+.statusBar {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.statusContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.statusItem {
+  font-size: 1.2rem;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statusLabel {
+  font-weight: 500;
+}
+
+.statusValue {
+  color: #8b5cf6;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.statusHint {
+  font-size: 0.95rem;
+  padding: 4px 12px;
+  border-radius: 16px;
+  
+  &.positive {
+    color: #059669;
+    background: #d1fae5;
+  }
+  
+  &.warning {
+    color: #dc2626;
+    background: #fee2e2;
+  }
+}
+
+// ═══════════════════════════════════════
+// 📚 資料庫資訊
+// ═══════════════════════════════════════
+
+.dbInfo {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dbBadge {
+  font-size: 0.85rem;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+// ═══════════════════════════════════════
+// 📱 響應式設計
+// ═══════════════════════════════════════
+
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .statusBar {
+    padding: 15px;
+  }
+
+  .statusItem {
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
