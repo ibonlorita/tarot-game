@@ -98,7 +98,7 @@ export const getCardImageUrl = (cardId: number): string => {
     console.warn(`找不到 ID ${cardId} 圖片檔名，使用預設圖`);
     return '/image/card-back.png';
   }
-  return `${TAROT_IMAGE_BASE_URL} ${filename}`;
+  return `${TAROT_IMAGE_BASE_URL}${filename}`;
 
 };
 
